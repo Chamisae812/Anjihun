@@ -338,12 +338,12 @@ a {
   }
 
   .hero-footer {
-    left: 28px;
+    left: auto;
     right: 28px;
     bottom: 28px;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 26px;
+    flex-wrap: nowrap;
   }
 }
 
@@ -357,7 +357,9 @@ a {
   }
 
   .hero-title {
-    line-height: 0.95;
+    font-size: clamp(2.9rem, 11vw, 4.6rem);
+    line-height: 1;
+    letter-spacing: 0;
   }
 
   .hero-subtitle {
