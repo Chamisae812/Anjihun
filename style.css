@@ -5,6 +5,8 @@
   --sidebar-strong: #1f1f1f;
   --hero-bg: #050505;
   --hero-text: #f4f4f1;
+  --nav-item-gap: 12px;
+  --nav-line-height: 1.35;
 }
 
 * {
@@ -42,6 +44,27 @@ a {
   flex-direction: column;
 }
 
+.mobile-nav-shell {
+  display: none;
+}
+
+.mobile-menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mobile-brand {
+  display: none;
+}
+
 .brand {
   display: block;
   margin-bottom: 92px;
@@ -59,13 +82,14 @@ a {
 
 .side-nav {
   display: grid;
-  gap: 12px;
+  gap: var(--nav-item-gap);
   margin-bottom: 52px;
   font-size: 1.1rem;
 }
 
 .side-nav a {
   width: fit-content;
+  line-height: var(--nav-line-height);
   transition:
     color 180ms ease,
     opacity 180ms ease;
@@ -79,6 +103,7 @@ a {
 .project-list a {
   display: inline-block;
   width: fit-content;
+  line-height: var(--nav-line-height);
   transition:
     color 180ms ease,
     opacity 180ms ease;
@@ -112,7 +137,7 @@ a {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 12px;
+  gap: var(--nav-item-gap);
   font-size: 1.08rem;
 }
 
@@ -156,7 +181,7 @@ a {
   margin: 0;
   font-family: "Orbitron", sans-serif;
   font-size: clamp(4rem, 8vw, 7rem);
-  line-height: 0.9;
+  line-height: 1.1em;
   letter-spacing: 0.01em;
 }
 
@@ -218,13 +243,79 @@ a {
   }
 
   .sidebar {
+    position: relative;
     width: 100%;
     min-width: 0;
-    padding: 36px 28px;
+    padding: 0;
+    background: #050505;
+    color: rgba(255, 255, 255, 0.62);
   }
 
   .brand {
-    margin-bottom: 42px;
+    display: none;
+  }
+
+  .mobile-nav-shell {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 52px;
+    padding: 0 16px;
+    background: #050505;
+    color: #f5f5f0;
+  }
+
+  .mobile-menu-button {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+  }
+
+  .mobile-brand {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: "Orbitron", sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    color: #f5f5f0;
+  }
+
+  .sidebar-menu {
+    display: none;
+    position: absolute;
+    top: 52px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 24px 28px 28px;
+    background: #050505;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .sidebar:hover .sidebar-menu,
+  .sidebar:focus-within .sidebar-menu {
+    display: block;
+  }
+
+  .project-list h2,
+  .about-project-list h2 {
+    color: #f5f5f0;
+  }
+
+  .detail-sidebar-panel .brand {
+    display: block;
+  }
+
+  .side-nav a:hover,
+  .project-list a:hover,
+  .about-nav a:hover,
+  .about-project-list a:hover,
+  .about-nav .is-active {
+    color: #ffffff;
   }
 
   .hero {
@@ -451,6 +542,12 @@ a {
     padding: 40px 28px 30px;
   }
 
+  .about-intro {
+    left: 28px;
+    right: 28px;
+    bottom: 30px;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -660,7 +757,7 @@ a {
 .project-panel h1 {
   margin: 0 0 58px;
   text-align: center;
-  font-size: clamp(3rem, 4.6vw, 4.2rem);
+  font-size: clamp(2.25rem, 3.4vw, 3.2rem);
   font-weight: 500;
   letter-spacing: 0.01em;
 }
