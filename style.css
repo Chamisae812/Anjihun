@@ -952,3 +952,32 @@ a {
     margin-left: 44px;
   }
 }
+
+@media (min-width: 1921px) {
+  .brand-top,
+  .brand-bottom {
+    font-size: 2.2rem;
+  }
+
+  .side-nav {
+    font-size: 1.06rem;
+  }
+
+  .project-list ul {
+    font-size: 1.04rem;
+  }
+
+  .hero-title {
+    font-size: 6.2rem;
+    line-height: 1.05;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 34ch;
+  }
+
+  .hero-footer {
+    font-size: 1.35rem;
+  }
+}
