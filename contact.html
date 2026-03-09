@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -11,15 +11,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   </head>
   <body class="contact-page">
     <div class="layout contact-layout">
       <aside class="sidebar about-sidebar">
         <div class="mobile-nav-shell">
-          <a class="mobile-menu-button" href="index.html" aria-label="메뉴 열기">
+          <a
+            class="mobile-menu-button"
+            href="index.html"
+            aria-label="메뉴 열기"
+          >
             <img src="./assets/Menu.png" alt="" />
           </a>
-          <a class="mobile-brand" href="index.html" aria-label="메인 페이지로 이동">
+          <a
+            class="mobile-brand"
+            href="index.html"
+            aria-label="메인 페이지로 이동"
+          >
             AN JI HUN Portfolio
           </a>
         </div>
@@ -40,7 +49,11 @@
           </nav>
 
           <section class="project-list about-project-list">
-            <h2><a class="project-list-title-link" href="project.html">Projects</a></h2>
+            <h2>
+              <a class="project-list-title-link" href="project.html"
+                >Projects</a
+              >
+            </h2>
             <ul>
               <li><a href="fluire.html">Fluire</a></li>
               <li><a href="illumi-stand.html">Illumi Stand</a></li>
@@ -60,7 +73,10 @@
           <h1>Contact</h1>
 
           <div class="contact-meta">
-            <p><span>Email.</span> <a href="mailto:jihoon030812@naver.com">jihoon030812@naver.com</a></p>
+            <p>
+              <span>Email.</span>
+              <a href="mailto:jihoon030812@naver.com">jihoon030812@naver.com</a>
+            </p>
             <p><span>Tel.</span> <a href="tel:01038033051">010-3803-3051</a></p>
           </div>
 
@@ -99,33 +115,35 @@
       </main>
     </div>
 
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+
     <script>
+      emailjs.init({
+        publicKey: "8pBSVFSk96x9upc8o",
+      });
+
       const contactForm = document.getElementById("contactForm");
 
       contactForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const name = contactForm.name.value.trim();
-        const email = contactForm.email.value.trim();
-        const message = contactForm.message.value.trim();
+        const params = {
+          name: contactForm.elements["name"].value.trim(),
+          email: contactForm.elements["email"].value.trim(),
+          message: contactForm.elements["message"].value.trim(),
+        };
 
-        if (!name || !email || !message) {
-          alert("모든 항목을 입력해주세요.");
-          return;
-        }
-
-        const subject = encodeURIComponent("[Portfolio Contact] " + name);
-        const body = encodeURIComponent(
-          "Name: " +
-            name +
-            "\nEmail: " +
-            email +
-            "\n\nMessage:\n" +
-            message
+        emailjs.send("service_e83w35c", "template_0gz6tv9", params).then(
+          (response) => {
+            console.log("SUCCESS", response.status, response.text);
+          },
+          (error) => {
+            console.log("FAILED", error);
+          },
         );
-
-        window.location.href =
-          "mailto:jihoon030812@naver.com?subject=" + subject + "&body=" + body;
       });
     </script>
   </body>
