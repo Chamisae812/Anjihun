@@ -139,6 +139,8 @@
         emailjs.send("service_e83w35c", "template_0gz6tv9", params).then(
           (response) => {
             console.log("SUCCESS", response.status, response.text);
+            alert("이메일이 성공적으로 전송되었습니다.");
+            contactForm.reset();
           },
           (error) => {
             console.log("FAILED", error);
